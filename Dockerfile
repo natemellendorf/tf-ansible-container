@@ -1,5 +1,7 @@
-FROM hashicorp/terraform:full as terraform
+FROM hashicorp/terraform:0.13.4 as terraform
 FROM python:3.8.3-alpine3.10
+
+COPY --from=terraform /bin/terraform /usr/local/bin/
 
 RUN \
   apk update && \ 
@@ -31,9 +33,6 @@ RUN \
 
 RUN \
   ansible-galaxy collection install \
-  juniper.device \
   cisco.ios
-
-COPY --from=terraform /go/bin/terraform /usr/local/bin/
 
 ENTRYPOINT ["/bin/ash"]
