@@ -1,7 +1,7 @@
 FROM python:3.8.3-alpine3.10
-FROM hashicorp/terraform:0.12.19 as terraform
+FROM hashicorp/terraform:0.13.4 as terraform
 
-COPY --from=terraform /usr/bin/terraform /usr/local/bin/
+COPY --from=terraform /bin/terraform /usr/local/bin/
 
 RUN \
   apk update && \ 
