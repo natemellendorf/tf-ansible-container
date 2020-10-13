@@ -1,5 +1,5 @@
-FROM python:3.8.3-alpine3.10
 FROM hashicorp/terraform:full as terraform
+FROM python:3.8.3-alpine3.10
 
 RUN \
   apk update && \ 
