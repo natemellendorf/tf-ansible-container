@@ -16,6 +16,7 @@ RUN \
   openssl-dev \
   musl-dev \
   libffi-dev \
+  git \
   ca-certificates && \
   update-ca-certificates && \
   rm -rf /var/cache/apk/*
