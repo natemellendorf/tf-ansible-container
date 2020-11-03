@@ -34,6 +34,7 @@ RUN \
 
 RUN \
   ansible-galaxy collection install \
-  cisco.ios
+  cisco.ios \
+  cisco.aci
 
 ENTRYPOINT ["/bin/ash"]
