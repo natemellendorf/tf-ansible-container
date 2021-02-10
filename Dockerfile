@@ -25,6 +25,9 @@ RUN \
   pip install \
   ansible \
   ansible-lint \
+  awscli \
+  boto3 \
+  botocore \
   jxmlease \
   jsnapy \
   ncclient \
@@ -35,6 +38,7 @@ RUN \
 RUN \
   ansible-galaxy collection install \
   cisco.ios \
-  cisco.aci
+  cisco.aci \
+  amazon.aws
 
 ENTRYPOINT ["/bin/ash"]
