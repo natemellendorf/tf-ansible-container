@@ -43,9 +43,6 @@ RUN \
   junos-eznc \
   kubernetes \
   hvac hvac[parser] \
-  && echo "Removing package list..." \
-  && apk del build-dependencies \
-  && rm -rf /var/cache/apk/*
 
 RUN \
   echo "Installing Ansible collections..." \
