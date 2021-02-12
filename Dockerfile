@@ -42,7 +42,7 @@ RUN \
   ncclient \
   junos-eznc \
   kubernetes \
-  hvac hvac[parser] \
+  hvac hvac[parser]
 
 RUN \
   echo "Installing Ansible collections..." \
