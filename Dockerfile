@@ -10,7 +10,6 @@ COPY --from=terraform /bin/terraform /usr/local/bin/
 RUN \
   apk update && \ 
   apk add --no-cache \
-  --virtual build-dependencies \
   build-base \
   libxml2-dev \
   libxslt-dev \
@@ -22,9 +21,9 @@ RUN \
   musl-dev \
   libffi-dev \
   git \
-  ca-certificates && \
-  update-ca-certificates && \
-  rm -rf /var/cache/apk/*
+  ca-certificates \
+  && update-ca-certificates \
+  && rm -rf /var/cache/apk/*
 
 RUN \
   echo "Updating PIP..." \
