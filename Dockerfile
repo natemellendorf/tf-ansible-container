@@ -37,6 +37,8 @@ RUN \
   awscli \
   boto3 \
   botocore \
+  yamllint \
+  black \
   jxmlease \
   jsnapy \
   ncclient \
