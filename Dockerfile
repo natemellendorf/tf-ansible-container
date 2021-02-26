@@ -1,3 +1,13 @@
+FROM golang:alpine AS builder
+
+RUN apk update && apk add --no-cache git
+WORKDIR /root
+
+RUN \
+git clone https://github.com/natemellendorf/terraform-provider-infoblox.git \
+&& cd terraform-provider-infoblox \
+&& make build
+
 FROM hashicorp/terraform:0.14.6 as terraform
 FROM python:3.9.1-alpine3.13
 
@@ -5,6 +15,7 @@ ENV ANSIBLE_VERSION 2.10.7
 ENV ANSIBLE_LINT 5.0.0
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST 1
 
+COPY --from=builder /root/terraform-provider-infoblox /root/terraform-provider-infoblox
 COPY --from=terraform /bin/terraform /usr/local/bin/
 
 RUN \
@@ -61,10 +72,7 @@ mkdir -p /etc/ansible \
 && mkdir -p ~/.gcp
 
 RUN \
-git clone https://github.com/natemellendorf/terraform-provider-infoblox.git \
-&& cd terraform-provider-infoblox \
-&& make build \
-&& cp terraform-provider-infoblox /usr/share/terraform/plugins/cloudpipeline.dev/devops/infoblox/0.0.1/linux_amd64/terraform-provider-infoblox_v0.0.1 \
+cp /root/terraform-provider-infoblox /usr/share/terraform/plugins/cloudpipeline.dev/devops/infoblox/0.0.1/linux_amd64/terraform-provider-infoblox_v0.0.1 \
 && chmod +x /usr/share/terraform/plugins/cloudpipeline.dev/devops/infoblox/0.0.1/linux_amd64/terraform-provider-infoblox_v0.0.1
 
 #RUN addgroup -S ansible-group && adduser -S ansible -G ansible-group
