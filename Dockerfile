@@ -6,6 +6,7 @@ WORKDIR /root
 RUN \
 git clone https://github.com/natemellendorf/terraform-provider-infoblox.git \
 && cd terraform-provider-infoblox \
+&& make fmt \
 && make build
 
 FROM hashicorp/terraform:0.14.6 as terraform
