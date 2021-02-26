@@ -1,6 +1,6 @@
-FROM golang:latest AS builder
+FROM golang:alpine AS builder
 
-RUN apk update && apk add --no-cache git
+RUN apk update && apk add --no-cache git make
 WORKDIR /root
 
 RUN \
