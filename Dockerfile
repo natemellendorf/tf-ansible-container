@@ -60,6 +60,13 @@ mkdir -p /etc/ansible \
 && mkdir -p ~/.aws \
 && mkdir -p ~/.gcp
 
+RUN \
+git clone https://github.com/natemellendorf/terraform-provider-infoblox.git \
+&& cd terraform-provider-infoblox \
+&& make build \
+&& cp terraform-provider-infoblox /usr/share/terraform/plugins/cloudpipeline.dev/devops/infoblox/0.0.1/linux_amd64/terraform-provider-infoblox_v0.0.1 \
+&& chmod +x /usr/share/terraform/plugins/cloudpipeline.dev/devops/infoblox/0.0.1/linux_amd64/terraform-provider-infoblox_v0.0.1
+
 #RUN addgroup -S ansible-group && adduser -S ansible -G ansible-group
 #USER ansible
 
