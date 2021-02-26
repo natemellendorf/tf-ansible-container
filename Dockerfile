@@ -32,6 +32,8 @@ RUN \
   musl-dev \
   libffi-dev \
   git \
+  bash \
+  curl \
   ca-certificates \
   && update-ca-certificates \
   && rm -rf /var/cache/apk/*
