@@ -16,7 +16,7 @@ ENV ANSIBLE_VERSION 2.10.7
 ENV ANSIBLE_LINT 5.0.0
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST 1
 
-COPY --from=builder /root/terraform-provider-infoblox /root/terraform-provider-infoblox
+COPY --from=builder /root/terraform-provider-infoblox/terraform-provider-infoblox /root/terraform-provider-infoblox
 COPY --from=terraform /bin/terraform /usr/local/bin/
 
 RUN \
