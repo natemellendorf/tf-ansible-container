@@ -34,6 +34,7 @@ RUN \
   libffi-dev \
   git \
   bash \
+  yq \
   curl \
   ca-certificates \
   && update-ca-certificates \
