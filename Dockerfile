@@ -35,6 +35,7 @@ RUN \
   git \
   bash \
   yq \
+  jq \
   curl \
   ca-certificates \
   && update-ca-certificates \
