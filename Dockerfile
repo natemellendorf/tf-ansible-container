@@ -54,6 +54,7 @@ RUN \
   boto3 \
   botocore \
   yamllint \
+  deepdiff \
   black \
   jxmlease \
   jsnapy \
